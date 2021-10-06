@@ -1,0 +1,23 @@
+{
+  "name": "fp-practice-in",
+  "version": "1.0.0",
+  "description": "Practiceing functional programming concept in Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeasir99/FP-practice-in-js.git"
+  },
+  "keywords": [],
+  "author": "yeasir ahamed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yeasir99/FP-practice-in-js/issues"
+  },
+  "homepage": "https://github.com/yeasir99/FP-practice-in-js#readme",
+  "devDependencies": {
+    "prettier": "^2.4.1"
+  }
+}

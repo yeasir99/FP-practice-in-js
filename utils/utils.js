@@ -8,3 +8,8 @@ export const partial =
 export const compose = (f, g) => x => f(g(x))
 
 export const pipe = (f, g) => x => g(f(x))
+
+export const identityFunctor = x => ({
+  map: f => identityFunctor(f(x)),
+  fold: f => f(x),
+})

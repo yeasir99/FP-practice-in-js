@@ -13,3 +13,9 @@ export const identityFunctor = x => ({
   map: f => identityFunctor(f(x)),
   fold: f => f(x),
 })
+
+export const Box = x => ({
+  map: f => Box(f(x)),
+  chain: f => f(x),
+  fold: f => f(x),
+})

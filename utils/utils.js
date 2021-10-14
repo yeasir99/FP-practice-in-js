@@ -19,3 +19,5 @@ export const Box = x => ({
   chain: f => f(x),
   fold: f => f(x),
 })
+
+export const log = x => console.log(x) || x

@@ -33,3 +33,11 @@ export const Left = x => ({
   map: f => Left(x),
   fold: (f, g) => f(x),
 })
+
+export const tryCatch = f => {
+  try {
+    return Right(f())
+  } catch (error) {
+    return Left(error)
+  }
+}

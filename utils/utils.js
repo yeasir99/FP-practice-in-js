@@ -41,3 +41,5 @@ export const tryCatch = f => {
     return Left(error)
   }
 }
+
+export const fromNullable = x => (x != null ? Right(x) : Left(x));

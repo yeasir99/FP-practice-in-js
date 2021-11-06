@@ -5,7 +5,10 @@ export const partial =
   (...restArgs) =>
     fn(...args, ...restArgs)
 
-export const compose = (f, g) => x => f(g(x))
+export const compose =
+  (f, g) =>
+  (...args) =>
+    f(g(...args))
 
 export const pipe = (f, g) => x => g(f(x))
 

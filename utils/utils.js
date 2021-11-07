@@ -23,7 +23,23 @@ export const compose =
     )
   }
 
-export const pipe = (f, g) => x => g(f(x))
+export const pipe =
+  (...Fns) =>
+  (...x) => {
+    let state = true
+    return Fns.reduce(
+      (acc, fn) =>
+        fn(
+          ...(state
+            ? (() => {
+                state = false
+                return acc
+              })()
+            : [acc]),
+        ),
+      x,
+    )
+  }
 
 export const identityFunctor = x => ({
   map: f => identityFunctor(f(x)),

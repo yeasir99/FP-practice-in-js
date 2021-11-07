@@ -6,9 +6,22 @@ export const partial =
     fn(...args, ...restArgs)
 
 export const compose =
-  (f, g) =>
-  (...args) =>
-    f(g(...args))
+  (...Fns) =>
+  (...x) => {
+    let state = true
+    return Fns.reduceRight(
+      (acc, fn) =>
+        fn(
+          ...(state
+            ? (() => {
+                state = false
+                return acc
+              })()
+            : [acc]),
+        ),
+      x,
+    )
+  }
 
 export const pipe = (f, g) => x => g(f(x))
 

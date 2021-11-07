@@ -9,7 +9,8 @@ const arrToString = arr => arr.join(' ')
 
 const capitalizeString = compose(
   arrToString,
-  compose(uppercaseFirstCharOfArrStr, stringToArr),
+  uppercaseFirstCharOfArrStr,
+  stringToArr,
 )
 
 capitalizeString('capitalize the first letter of each word in a string')

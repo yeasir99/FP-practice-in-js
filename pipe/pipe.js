@@ -1,4 +1,4 @@
-import {compose} from '../utils/utils.js'
+import {pipe} from '../utils/utils.js'
 
 const stringToArr = str => str.split(' ')
 
@@ -7,13 +7,13 @@ const uppercaseFirstCharOfArrStr = arr =>
 
 const arrToString = arr => arr.join(' ')
 
-// Function invoke right to left
-// left <---<---<--- right
+// Function invoke from left to right
+// left ----->---->----> right
 
-const capitalizeString = compose(
-  arrToString,
-  uppercaseFirstCharOfArrStr,
+const capitalizeString = pipe(
   stringToArr,
+  uppercaseFirstCharOfArrStr,
+  arrToString,
 )
 
 capitalizeString('capitalize the first letter of each word in a string')

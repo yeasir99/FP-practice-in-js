@@ -1,4 +1,13 @@
-export const curry = f => x => y => f(x, y)
+export const curry = fn => {
+  const curryN =
+    (n, fn) =>
+    (...args) =>
+      args.length >= n
+        ? fn(...args)
+        : curryN(n - args.length, (...innerArgs) => fn(...args, ...innerArgs))
+
+  return curryN(fn.length, fn)
+}
 
 export const partial =
   (fn, ...args) =>

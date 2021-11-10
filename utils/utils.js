@@ -58,7 +58,7 @@ export const Id = x => ({
 })
 Id.of = x => Id(x)
 
-export const log = x => console.log(x) || x
+export const Log = x => console.log(x) || x
 
 export const Right = x => ({
   chain: f => f(x),

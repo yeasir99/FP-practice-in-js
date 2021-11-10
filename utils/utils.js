@@ -50,16 +50,13 @@ export const pipe =
     )
   }
 
-export const identityFunctor = x => ({
-  map: f => identityFunctor(f(x)),
-  fold: f => f(x),
-})
-
-export const Box = x => ({
-  map: f => Box(f(x)),
+export const Id = x => ({
+  map: f => Id(f(x)),
   chain: f => f(x),
-  fold: f => f(x),
+  extract: () => x,
+  concat: o => Id(x + o.extract()),
 })
+Id.of = x => Id(x)
 
 export const log = x => console.log(x) || x
 

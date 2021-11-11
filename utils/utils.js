@@ -54,7 +54,7 @@ export const Id = x => ({
   map: f => Id(f(x)),
   chain: f => f(x),
   extract: () => x,
-  concat: o => Id(x + o.extract()),
+  concat: o => Id(x.concat(o.extract())),
 })
 Id.of = x => Id(x)
 

@@ -60,7 +60,7 @@ Id.of = x => Id(x)
 
 export const Log = x => console.log(x) || x
 
-const Either = (() => {
+export const Either = (() => {
   const Right = x => ({
     chain: f => f(x),
     ap: other => other.map(x),

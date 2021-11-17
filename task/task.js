@@ -1,4 +1,3 @@
-import path from 'path'
 import fs from 'fs'
 import {Task} from '../utils/utils.js'
 
@@ -28,7 +27,7 @@ const writeFile = (filePath, contents) =>
   )
 
 const App = () =>
-  readFile(path.resolve(__dirname, 'config.json'), 'utf-8')
+  readFile('./config.json', 'utf-8')
     .map(contents => contents.replace(/3/g, '6'))
     .chain(newContent => writeFile('./config1.json', newContent))
 

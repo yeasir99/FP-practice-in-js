@@ -1,19 +1,23 @@
-import {compose} from '../../utils/utils'
+import apiKey from './apiKey'
+import {Task, compose} from '../../utils/utils'
 
-const stringToArr = str => str.split(' ')
+const getOpenWeather = zip =>
+  `http://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${apiKey}`
 
-const uppercaseFirstCharOfArrStr = arr =>
-  arr.map(str => str.charAt(0).toUpperCase() + str.slice(1))
+const fetchIt = url => Task((rej, res) => fetch(url).then(res).catch(rej))
 
-const arrToString = arr => arr.join(' ')
+const getWeather = compose(fetchIt, getOpenWeather)
 
-// Function invoke right to left
-// left <---<---<--- right
+const app = () => {
+  const goButton = document.getElementById('go')
+  const input = document.getElementById('zip')
+  const results = document.getElementById('result')
+  console.log(input.value)
 
-const capitalizeString = compose(
-  arrToString,
-  uppercaseFirstCharOfArrStr,
-  stringToArr,
-)
+  goButton.addEventListener('click', () => {
+    const zipCode = input.value.trim()
+    getWeather(zipCode).fork(console.error, console.log)
+  })
+}
 
-capitalizeString('capitalize the first letter of each word in a string')
+app()

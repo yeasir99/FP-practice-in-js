@@ -3,6 +3,8 @@ node_modules
 node_modules/
 /.pnp
 .pnp.js
+dist
+apiKey.js
 
 # testing
 /coverage

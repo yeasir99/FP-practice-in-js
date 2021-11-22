@@ -1,7 +1,6 @@
-import apiKey from './apiKey'
 import {Task, compose} from '../../utils/utils'
 
-const getOpenWeather = zip =>
+const getOpenWeather = (zip, apiKey) =>
   `http://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${apiKey}`
 
 const fetchIt = url =>
